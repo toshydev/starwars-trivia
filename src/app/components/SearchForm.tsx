@@ -11,9 +11,6 @@ export default function SearchForm() {
   const name = useStore((state) => state.name);
   const setName = useStore((state) => state.setName);
   const resetName = useStore((state) => state.resetName);
-  const model = useStore((state) => state.model);
-  const setModel = useStore((state) => state.setModel);
-  const resetModel = useStore((state) => state.resetModel);
 
   const resources = [
     "people",
@@ -31,7 +28,6 @@ export default function SearchForm() {
 
     console.log("Category:", category);
     console.log("Name:", name);
-    console.log("Model:", model);
   }
 
   return (
@@ -67,21 +63,6 @@ export default function SearchForm() {
         Reset {category === "films" ? "Title" : "Name"}
       </button>
       <br />
-      {(category === "vehicles" || category === "starships") && (
-        <>
-          <label>
-            Model:
-            <input
-              type="text"
-              value={model}
-              onChange={(e) => setModel(e.target.value)}
-            />
-          </label>
-          <button type="button" onClick={resetModel}>
-            Reset Model
-          </button>
-        </>
-      )}
       <button type="submit">Search</button>
     </form>
   );

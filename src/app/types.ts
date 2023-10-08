@@ -1,4 +1,4 @@
-interface Entry {
+export interface Entry {
   url: string;
   created: string;
   edited: string;

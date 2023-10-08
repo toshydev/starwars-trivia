@@ -1,5 +1,4 @@
 import { Film, Item, Person, Species, Starship, Vehicle } from "../types";
-import ItemLink from "./ItemLink";
 import ReferenceList from "./ReferenceList";
 
 type ItemProps = {

@@ -1,22 +1,26 @@
 import { create } from "zustand";
 
 interface State {
+  page: number;
   category: string;
   name: string;
-  model: string;
+  nextPage: () => void;
+  prevPage: () => void;
+  setPage: (page: number) => void;
   setCategory: (category: string) => void;
   resetCategory: () => void;
   getRandomCategory: () => void;
   setName: (name: string) => void;
   resetName: () => void;
-  setModel: (model: string) => void;
-  resetModel: () => void;
 }
 
 export const useStore = create<State>((set) => ({
+  page: 1,
   category: "",
   name: "",
-  model: "",
+  nextPage: () => set((state) => ({ page: state.page + 1 })),
+  prevPage: () => set((state) => ({ page: state.page - 1 })),
+  setPage: (page: number) => set(() => ({ page })),
   setCategory: (category: string) => set(() => ({ category })),
   resetCategory: () => set(() => ({ category: "" })),
   getRandomCategory: () =>
@@ -32,6 +36,4 @@ export const useStore = create<State>((set) => ({
     })),
   setName: (name: string) => set(() => ({ name })),
   resetName: () => set(() => ({ name: "" })),
-  setModel: (model: string) => set(() => ({ model })),
-  resetModel: () => set(() => ({ model: "" })),
 }));
