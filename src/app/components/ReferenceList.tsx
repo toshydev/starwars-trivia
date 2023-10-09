@@ -1,7 +1,7 @@
-"use client";
-
 import { nanoid } from "nanoid";
 import ItemLink from "./ItemLink";
+import { StyledList } from "./StyledList";
+import { StyledListItem } from "./StyledListItem";
 
 type ReferenceListProps = {
   urls: string[];
@@ -15,17 +15,17 @@ function getCategory(url: string) {
 }
 
 export default function ReferenceList({ urls }: ReferenceListProps) {
-  const category = getCategory(urls[0]);
+  const category = getCategory(urls[0])?.replace(/^\w/, (c) => c.toUpperCase());
   return (
     <div>
       <h4>{category}: </h4>
-      <ul>
+      <StyledList>
         {urls.map((url) => (
-          <li key={nanoid()}>
+          <StyledListItem key={nanoid()}>
             <ItemLink url={url} />
-          </li>
+          </StyledListItem>
         ))}
-      </ul>
+      </StyledList>
     </div>
   );
 }

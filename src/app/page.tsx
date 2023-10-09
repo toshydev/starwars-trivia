@@ -6,8 +6,12 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <h1>Star Wars Trivia</h1>
+        <h2>All things Star Wars...</h2>
+      </div>
+      <div className={styles.controls}>
         <SearchForm />
+      </div>
+      <div className={styles.content}>
         <ItemList />
       </div>
     </main>

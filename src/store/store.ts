@@ -8,7 +8,6 @@ interface State {
   prevPage: () => void;
   setPage: (page: number) => void;
   setCategory: (category: string) => void;
-  resetCategory: () => void;
   getRandomCategory: () => void;
   setName: (name: string) => void;
   resetName: () => void;
@@ -22,7 +21,6 @@ export const useStore = create<State>((set) => ({
   prevPage: () => set((state) => ({ page: state.page - 1 })),
   setPage: (page: number) => set(() => ({ page })),
   setCategory: (category: string) => set(() => ({ category })),
-  resetCategory: () => set(() => ({ category: "" })),
   getRandomCategory: () =>
     set(() => ({
       category: [
