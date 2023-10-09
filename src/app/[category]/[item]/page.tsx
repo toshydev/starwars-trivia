@@ -14,7 +14,9 @@ export default async function ItemPage({
 
   return (
     <div className={styles.content}>
-      <Link className={styles.backlink} href="/">Back</Link>
+      <Link className={styles.backlink} href="/">
+        Back
+      </Link>
       <ItemDetail item={data} />
     </div>
   );

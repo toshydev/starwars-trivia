@@ -13,6 +13,7 @@ function getCategory(url: string) {
 
 export default function ReferenceList({ urls }: ReferenceListProps) {
   const category = getCategory(urls[0])?.replace(/^\w/, (c) => c.toUpperCase());
+  if (urls.length === 0) return null;
   return (
     <>
       <h4>{category}: </h4>

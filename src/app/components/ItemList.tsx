@@ -5,7 +5,17 @@ import ItemLink from "./ItemLink";
 import { nanoid } from "nanoid/non-secure";
 import { StyledSpinner } from "./StyledSpinner";
 import { useStore } from "@/store/store";
-import { Entry } from "../types";
+import {
+  Entry,
+  Film,
+  Item,
+  Person,
+  Planet,
+  Species,
+  Starship,
+  Vehicle,
+} from "../types";
+import Link from "next/link";
 
 const BASE_URL = "https://swapi.dev/api/";
 
@@ -58,11 +68,19 @@ export default function ItemList() {
       ) : (
         <ul>
           {items.length > 0 &&
-            items.map((item: Entry) => (
-              <li key={nanoid()}>
-                <ItemLink url={item.url} />
-              </li>
-            ))}
+            items.map(
+              (item: Film | Planet | Species | Person | Vehicle | Starship) => (
+                <li key={nanoid()}>
+                  <Link
+                    href={`/${item.url.split("/")[4]}/${
+                      item.url.split("/")[5]
+                    }`}
+                  >
+                    {"name" in item ? item.name : item.title}
+                  </Link>
+                </li>
+              )
+            )}
         </ul>
       )}
       <section>

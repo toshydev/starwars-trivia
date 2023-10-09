@@ -17,16 +17,16 @@ function FilmDetail(item: Film) {
       <table>
         <tbody>
           <tr>
+            <td>Release Date</td>
+            <td>{item.release_date}</td>
+          </tr>
+          <tr>
             <td>Director</td>
             <td>{item.director}</td>
           </tr>
           <tr>
             <td>Producer</td>
             <td>{item.producer}</td>
-          </tr>
-          <tr>
-            <td>Release Date</td>
-            <td>{item.release_date}</td>
           </tr>
         </tbody>
       </table>
@@ -94,20 +94,20 @@ function PersonDetail(item: Person) {
 function StarshipDetail(item: Starship) {
   return (
     <>
-      <h2>{item.name}</h2>
+      <h3>{item.name}</h3>
       <table>
         <tbody>
-          <tr>
-            <td>Model</td>
-            <td>{item.model}</td>
-          </tr>
           <tr>
             <td>Manufacturer</td>
             <td>{item.manufacturer}</td>
           </tr>
           <tr>
-            <td>Cost in Credits</td>
-            <td>{item.cost_in_credits}</td>
+            <td>Model</td>
+            <td>{item.model}</td>
+          </tr>
+          <tr>
+            <td>Starship Class</td>
+            <td>{item.starship_class}</td>
           </tr>
           <tr>
             <td>Length</td>
@@ -116,6 +116,10 @@ function StarshipDetail(item: Starship) {
           <tr>
             <td>Max Atmosphering Speed</td>
             <td>{item.max_atmosphering_speed}</td>
+          </tr>
+          <tr>
+            <td>Hyperdrive Rating</td>
+            <td>{item.hyperdrive_rating}</td>
           </tr>
           <tr>
             <td>Crew</td>
@@ -130,20 +134,16 @@ function StarshipDetail(item: Starship) {
             <td>{item.cargo_capacity}</td>
           </tr>
           <tr>
-            <td>Consumables</td>
-            <td>{item.consumables}</td>
-          </tr>
-          <tr>
-            <td>Hyperdrive Rating</td>
-            <td>{item.hyperdrive_rating}</td>
-          </tr>
-          <tr>
             <td>MGLT</td>
             <td>{item.MGLT}</td>
           </tr>
           <tr>
-            <td>Starship Class</td>
-            <td>{item.starship_class}</td>
+            <td>Consumables</td>
+            <td>{item.consumables}</td>
+          </tr>
+          <tr>
+            <td>Cost in Credits</td>
+            <td>{item.cost_in_credits}</td>
           </tr>
         </tbody>
       </table>
@@ -157,20 +157,20 @@ function StarshipDetail(item: Starship) {
 function VehicleDetail(item: Vehicle) {
   return (
     <>
-      <h2>{item.name}</h2>
+      <h3>{item.name}</h3>
       <table>
         <tbody>
-          <tr>
-            <td>Model</td>
-            <td>{item.model}</td>
-          </tr>
           <tr>
             <td>Manufacturer</td>
             <td>{item.manufacturer}</td>
           </tr>
           <tr>
-            <td>Cost in Credits</td>
-            <td>{item.cost_in_credits}</td>
+            <td>Model</td>
+            <td>{item.model}</td>
+          </tr>
+          <tr>
+            <td>Vehicle Class</td>
+            <td>{item.vehicle_class}</td>
           </tr>
           <tr>
             <td>Length</td>
@@ -197,8 +197,8 @@ function VehicleDetail(item: Vehicle) {
             <td>{item.consumables}</td>
           </tr>
           <tr>
-            <td>Vehicle Class</td>
-            <td>{item.vehicle_class}</td>
+            <td>Cost in Credits</td>
+            <td>{item.cost_in_credits}</td>
           </tr>
         </tbody>
       </table>
@@ -212,24 +212,24 @@ function VehicleDetail(item: Vehicle) {
 function SpeciesDetail(item: Species) {
   return (
     <>
-      <h2>{item.name}</h2>
+      <h3>{item.name}</h3>
       <table>
         <tbody>
-          <tr>
-            <td>Classification</td>
-            <td>{item.classification}</td>
-          </tr>
           <tr>
             <td>Designation</td>
             <td>{item.designation}</td>
           </tr>
           <tr>
-            <td>Average Height</td>
-            <td>{item.average_height}</td>
+            <td>Classification</td>
+            <td>{item.classification}</td>
           </tr>
           <tr>
             <td>Average Lifespan</td>
             <td>{item.average_lifespan}</td>
+          </tr>
+          <tr>
+            <td>Average Height</td>
+            <td>{item.average_height}</td>
           </tr>
           <tr>
             <td>Eye Colors</td>
@@ -262,6 +262,53 @@ function SpeciesDetail(item: Species) {
   );
 }
 
+function PlanetDetail(item: Planet) {
+  return (
+    <>
+      <h3>{item.name}</h3>
+      <table>
+        <tbody>
+          <tr>
+            <td>Diameter</td>
+            <td>{item.diameter}</td>
+          </tr>
+          <tr>
+            <td>Gravity</td>
+            <td>{item.gravity}</td>
+          </tr>
+          <tr>
+            <td>Rotation Period</td>
+            <td>{item.rotation_period}</td>
+          </tr>
+          <tr>
+            <td>Orbital Period</td>
+            <td>{item.orbital_period}</td>
+          </tr>
+          <tr>
+            <td>Climate</td>
+            <td>{item.climate}</td>
+          </tr>
+          <tr>
+            <td>Terrain</td>
+            <td>{item.terrain}</td>
+          </tr>
+          <tr>
+            <td>Surface Water</td>
+            <td>{item.surface_water}</td>
+          </tr>
+          <tr>
+            <td>Population</td>
+            <td>{item.population}</td>
+          </tr>
+        </tbody>
+      </table>
+      <ReferenceList urls={item.residents} />
+      <ReferenceList urls={item.films} />
+      <DateSection created={item.created} edited={item.edited} />
+    </>
+  );
+}
+
 export default function ItemDetail({ item }: ItemProps) {
   if (!item)
     return <>No information found. Please change the category or name.</>;
@@ -276,5 +323,9 @@ export default function ItemDetail({ item }: ItemProps) {
     return VehicleDetail(item);
   } else if ("classification" in item) {
     return SpeciesDetail(item);
+  } else if ("rotation_period" in item) {
+    return PlanetDetail(item);
+  } else {
+    return <>No information found. Please change the category or name.</>;
   }
 }

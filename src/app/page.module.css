@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
   min-height: 100vh;
+  max-width: 1000px;
   gap: 1rem;
 }
 
@@ -36,6 +36,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  max-width: 1000px;
 }
 
 .content ul li {
@@ -135,6 +136,7 @@
 
 .tabBar label:hover {
   border: 2px solid cyan;
+  cursor: pointer;
 }
 
 .tabBar label:active {
@@ -179,7 +181,6 @@
 
 .searchField {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
@@ -202,10 +203,6 @@
   background: black;
 }
 
-.searchField input:active {
-  scale: 0.9;
-}
-
 .searchField input:hover {
   border: 2px solid cyan;
 }
@@ -215,7 +212,6 @@
   border: 2px solid cyan;
   background: blue;
   color: cyan;
-  scale: 1.1;
 }
 
 .searchField input::placeholder {
@@ -235,7 +231,11 @@
   border: 2px solid gold;
   transition: all 0.2s ease-in-out;
   font-size: 1rem;
-  width: 6rem;
+  width: 5rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .searchField button:active {
@@ -244,6 +244,29 @@
 
 .searchField button:hover {
   border: 2px solid cyan;
+}
+
+.searchField button[type="button"] {
+  background-color: #00002c;
+  color: cyan;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid cyan;
+  transition: all 0.2s ease-in-out;
+  font-size: 1rem;
+  width: 5rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchField button[type="button"]:active {
+  scale: 0.9;
+}
+
+.searchField button[type="button"]:hover {
+  border: 2px solid gold;
 }
 
 .divider {

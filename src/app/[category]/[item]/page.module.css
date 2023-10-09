@@ -27,6 +27,17 @@
   padding: 0.5rem;
 }
 
+.content table a {
+  color: gold;
+  border-radius: 2px;
+  transition: all 0.2s ease-in-out;
+}
+
+.content table a:hover {
+  color: black;
+  background: gold;
+}
+
 .content ul {
   list-style: none;
   padding: 0;

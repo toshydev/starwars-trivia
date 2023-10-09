@@ -10,7 +10,6 @@ export default function SearchForm() {
   const category = useStore((state) => state.category);
   const setCategory = useStore((state) => state.setCategory);
   const getRandomCategory = useStore((state) => state.getRandomCategory);
-  const name = useStore((state) => state.name);
   const setName = useStore((state) => state.setName);
   const resetName = useStore((state) => state.resetName);
 
@@ -22,6 +21,11 @@ export default function SearchForm() {
     "species",
     "starships",
   ];
+
+  function handleSearch(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setName(nameValue);
+  }
 
   return (
     <div className={styles.menu}>
@@ -49,17 +53,15 @@ export default function SearchForm() {
         </button>
       </div>
       <div className={styles.divider} />
-      <div className={styles.searchField}>
+      <form className={styles.searchField} onSubmit={handleSearch}>
         <label>{category === "films" ? "Title" : "Name"}:</label>
         <input
           type="text"
-          value={name}
+          value={nameValue}
           onChange={(e) => setNameValue(e.target.value)}
           placeholder={"e.g. skywalker"}
         />
-        <button type="button" onClick={() => setName(nameValue)}>
-          Search
-        </button>
+        <button type="submit">Search</button>
         <button
           type="button"
           onClick={() => {
@@ -69,7 +71,7 @@ export default function SearchForm() {
         >
           Reset
         </button>
-      </div>
+      </form>
     </div>
   );
 }

@@ -6,11 +6,6 @@
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-  }
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -24,19 +19,14 @@ body {
 }
 
 body {
-  background: black;
+  background: linear-gradient(black 80%, #040418 84%, #00002c 86%, #23236d 90%, #9090df 98%);
+  padding: 1rem;
 }
 
 a {
   color: inherit;
   text-decoration: none;
   width: 100%;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
 
 h1 {
@@ -56,4 +46,8 @@ h4,
 h5,
 h6 {
   color: gold;
+}
+
+button:hover {
+  cursor: pointer;
 }
