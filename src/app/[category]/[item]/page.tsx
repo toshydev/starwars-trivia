@@ -1,5 +1,6 @@
 import ItemDetail from "@/app/components/ItemDetail";
 import Link from "next/link";
+import styles from "./page.module.css";
 
 export default async function ItemPage({
   params,
@@ -12,9 +13,9 @@ export default async function ItemPage({
   const data = await response.json();
 
   return (
-    <>
-      <Link href="/">Back</Link>
+    <div className={styles.content}>
+      <Link className={styles.backlink} href="/">Back</Link>
       <ItemDetail item={data} />
-    </>
+    </div>
   );
 }

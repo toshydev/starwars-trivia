@@ -1,13 +1,11 @@
 "use client";
 
-import { useStore } from "@/store/store";
 import { useEffect, useState } from "react";
 import ItemLink from "./ItemLink";
 import { nanoid } from "nanoid/non-secure";
 import { Entry } from "../types";
 import { StyledSpinner } from "./StyledSpinner";
-import { StyledList } from "./StyledList";
-import { StyledListItem } from "./StyledListItem";
+import { useStore } from "@/store/store";
 
 export default function ItemList() {
   const [loading, setLoading] = useState(false);
@@ -24,6 +22,9 @@ export default function ItemList() {
     const response = await fetch(
       `https://swapi.dev/api/${category}/${name && "?search=" + name}`
     );
+
+    if (!response.ok) throw new Error("Failed to fetch data");
+
     const data = await response.json();
     setItems(data.results);
     setLoading(false);
@@ -32,16 +33,21 @@ export default function ItemList() {
   if (!items)
     return <>No information found. Please change the category or name.</>;
 
-  if (loading) return <StyledSpinner />;
-
   return (
-    <StyledList>
-      {items.length > 0 &&
-        items.map((item: Entry) => (
-          <StyledListItem key={nanoid()}>
-            <ItemLink url={item.url} />
-          </StyledListItem>
-        ))}
-    </StyledList>
+    <>
+      <h2>{category}</h2>
+      {loading ? (
+        <StyledSpinner />
+      ) : (
+        <ul>
+          {items.length > 0 &&
+            items.map((item: Entry) => (
+              <li key={nanoid()}>
+                <ItemLink url={item.url} />
+              </li>
+            ))}
+        </ul>
+      )}
+    </>
   );
 }

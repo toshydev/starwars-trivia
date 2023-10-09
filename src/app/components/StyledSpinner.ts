@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledSpinner = styled.div`
   border: 0.5rem solid #00002c;
   border-top: 0.5rem solid cyan;
   border-radius: 50%;
-  width: 5rem;
-  height: 5rem;
+  width: 2rem;
+  height: 2rem;
   animation: spin 2s linear infinite;
 
   @keyframes spin {

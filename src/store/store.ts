@@ -15,7 +15,7 @@ interface State {
 
 export const useStore = create<State>((set) => ({
   page: 1,
-  category: "",
+  category: "films",
   name: "",
   nextPage: () => set((state) => ({ page: state.page + 1 })),
   prevPage: () => set((state) => ({ page: state.page - 1 })),
