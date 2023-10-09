@@ -1,3 +1,10 @@
+export interface ResponseEntity {
+  count: number;
+  next: string;
+  previous: string;
+  results: Item[];
+}
+
 export interface Entry {
   url: string;
   created: string;

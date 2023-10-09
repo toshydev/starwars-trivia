@@ -59,6 +59,50 @@
   color: cyan;
 }
 
+.content section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content p {
+  color: cyan;
+}
+
+.content section button {
+  background-color: #00002c;
+  color: cyan;
+  font-weight: bold;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  border: 2px solid cyan;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.8rem;
+  width: 4rem;
+}
+
+.content section button:active {
+  scale: 0.9;
+}
+
+.content section button:hover {
+  border: 2px solid gold;
+  color: gold;
+}
+
+.content section button:disabled {
+  background-color: #00002c;
+  color: blue;
+  font-weight: bold;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  border: 2px solid transparent;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.8rem;
+  width: 4rem;
+}
+
 .menu {
   display: flex;
   flex-direction: column;

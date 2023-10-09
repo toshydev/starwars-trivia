@@ -3,8 +3,10 @@
 import { nanoid } from "nanoid/non-secure";
 import styles from "../page.module.css";
 import { useStore } from "@/store/store";
+import { useState } from "react";
 
 export default function SearchForm() {
+  const [nameValue, setNameValue] = useState("");
   const category = useStore((state) => state.category);
   const setCategory = useStore((state) => state.setCategory);
   const getRandomCategory = useStore((state) => state.getRandomCategory);
@@ -52,10 +54,19 @@ export default function SearchForm() {
         <input
           type="text"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setNameValue(e.target.value)}
           placeholder={"e.g. skywalker"}
         />
-        <button type="button" onClick={resetName}>
+        <button type="button" onClick={() => setName(nameValue)}>
+          Search
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            setNameValue("");
+            resetName();
+          }}
+        >
           Reset
         </button>
       </div>

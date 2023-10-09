@@ -4,8 +4,6 @@ interface State {
   page: number;
   category: string;
   name: string;
-  nextPage: () => void;
-  prevPage: () => void;
   setPage: (page: number) => void;
   setCategory: (category: string) => void;
   getRandomCategory: () => void;
