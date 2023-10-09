@@ -19,7 +19,7 @@ body {
 }
 
 body {
-  background: linear-gradient(black 80%, #040418 84%, #00002c 86%, #23236d 90%, #9090df 98%);
+  background: black;
   padding: 1rem;
 }
 
